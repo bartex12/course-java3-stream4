@@ -1,9 +1,8 @@
 package com.batiaev.java3.lesson3;
 
-import sun.nio.fs.UnixFileSystemProvider;
-
 import java.io.*;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -21,23 +20,64 @@ public class Lesson3 implements Serializable {
 //        System.out.println(file.getCanonicalPath());
 //        System.out.println(file.getPath());
 
-
-
-
-
-//        file();
-//        byteArrayStream();
-//        fileStream();
+       //file();
+        //example1();
+        //example2();
+       //byteArrayStream();
+        //fileStream();
 //        pipedStream();
 //        sequenceStream();
-//        dataStream();
-//        bufferedStream();
+       //dataStream();
+        //bufferedStream();
 //        objectStream();
+        bufferedWriterAndReaderArrayList();
+    }
+
+    private static void   bufferedWriterAndReaderArrayList(){
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("Один");
+        arr.add("Два");
+        arr.add("Три");
+        arr.add("Четыре");
+        arr.add("Пять");
+        System.out.println("arr.size() = " + arr.size());
+
+        File buf = new File("bufWriter.txt");
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(buf))){
+            for (String s: arr){
+                bw.write(s);
+                bw.write(System.getProperty("line.separator"));
+            }
+            bw.flush();
+            System.out.println(" buf.length()" + buf.length());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try( BufferedReader br = new BufferedReader(new FileReader(buf))) {
+            ArrayList<String> input = new ArrayList<>();
+            String str;
+            while ((str = br.readLine())!=null){
+                input.add(str);
+            }
+            for (String s: input){
+                System.out.println(s);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void file() {
-        File testFile = new File("/Users/anton/1.txt");
+        //File testFile = new File("C:\\Users\\Андрей\\1.txt"); //работает -  в каталог C:\Users\Андрей
+        //File testFile = new File("D:\\1.txt"); //работает - в каталог D:\
+        File testFile = new File("1.txt"); //работает - в каталог D:\Java_Programs\GeekBrains\Java3\course-java3-stream4
+
         Path path = testFile.toPath();
+        System.out.println(path);
+        System.out.println(testFile);
+        System.out.println(testFile.getAbsolutePath());
         try {
             FileInputStream source = new FileInputStream(testFile);
             Scanner scanner = new Scanner(source);
@@ -46,27 +86,36 @@ public class Lesson3 implements Serializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-//
-//
-//        File file = new File("/etc");
-//        file.mkdir();
-//        System.out.format("%s, is directory: %s",
-//                file.getAbsoluteFile(), file.isDirectory());
-//
-//        String[] list = file.list();
-//        for (String s : list) {
-//            System.out.println(s);
-//        }
-//
-        //example 2
+    }
 
-//        File test = new File("~/./././test.txt");
-//        System.out.println(test.getAbsolutePath());
-//        try {
-//            System.out.println(test.getCanonicalPath());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    //example 1
+    private static void example1() {
+        //создаём каталог на диске D по адресу D:\etc
+        File file = new File("/etc");
+        //создаём каталог etc по адресу D:\Java_Programs\GeekBrains\Java3\course-java3-stream4\etc
+        //File file = new File("etc");
+        //создаём каталог и подкаталог на диске D по адресу D:\etc
+        //File file = new File("/etc/cat1");
+        file.mkdir();
+        System.out.format("%s, is directory: %s\n",
+                file.getAbsoluteFile(), file.isDirectory());
+
+        String[] list = file.list(); //вывести список содержимого
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+
+    //example 2
+    //не понял этот пример
+    private static void example2() {
+        File test = new File("~/./././test.txt");
+        System.out.println(test.getAbsolutePath());
+        try {
+            System.out.println(test.getCanonicalPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void objectStream() {
@@ -96,12 +145,15 @@ public class Lesson3 implements Serializable {
             DataOutputStream out = new DataOutputStream(
                     new FileOutputStream("file.txt"));
             out.writeUTF("Hello world");
+            out.writeUTF("Hello world");
             out.writeInt(128);
             out.writeLong(128);
 //            out.write
             out.close();
             DataInputStream in = new DataInputStream(
                     new FileInputStream("file.txt"));
+            System.out.println(in.readUTF());
+            System.out.println(in.readUTF());
             System.out.println(in.readInt());
             System.out.println(in.readLong());
             in.close();
@@ -123,7 +175,8 @@ public class Lesson3 implements Serializable {
 
 
         byte[] arr = {100, 25, 50};
-        ByteArrayInputStream in = new ByteArrayInputStream(arr);
+        //ByteArrayInputStream in = new ByteArrayInputStream(bytes); //Ваводит А н т о н при  System.out.print((char) x + " ");
+        ByteArrayInputStream in = new ByteArrayInputStream(arr); //выводит 100 25 50  при System.out.print(x + " ");
         process(in);
         int x;
         while ((x = in.read()) != -1) {
@@ -136,18 +189,21 @@ public class Lesson3 implements Serializable {
     }
 
     private static void fileStream() {
-        byte[] bw = {10, 20, 30};
+        byte[] bw = {10, 20, 30,40,50};
         byte[] br = new byte[20];
 
         FileInputStream in = null;
-        try (FileOutputStream out = new FileOutputStream("12345.txt");
-             FileInputStream into = new FileInputStream("12345.txt")) {
-
-            int read = into.read();
-            out.write(bw);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try (FileOutputStream out = new FileOutputStream("12345.txt");
+//             FileInputStream into = new FileInputStream("12345.txt")) {
+//
+//            int read = into.read();
+//            System.out.println("read = " + read);
+//            out.write(bw);
+//            read = into.read();
+//            System.out.println("read = " + read);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
         try {
@@ -245,17 +301,23 @@ public class Lesson3 implements Serializable {
             OutputStream out = new BufferedOutputStream(
                     new FileOutputStream("file.txt"));
 
-            for (int i = 0; i < 1000000; i++) {
+            for (int i = 33; i <100; i++) {
                 out.write(i);
-                System.out.println(f.length());
+                //длина файла = 0, пока пишется не в файл а в буфер который 8192 байт по умолчанию
+                //System.out.println(" длина файла = " + f.length());
             }
+            //без следующей строки буфер не будет передан в выходной поток и длина файла = 0 пока не out.close();
             out.flush();
+            System.out.println(" длина файла = " + f.length());
             out.close();
 
             InputStream in = new BufferedInputStream(
                     new FileInputStream("file.txt"));
-            while (in.read() != -1) {
+            int n;
+            while ((n = in.read())!= -1) {
+                System.out.print((char) n + " ");
             }
+            System.out.println();
             in.close();
         } catch (IOException e) {
             e.printStackTrace();
