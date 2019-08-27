@@ -1,11 +1,17 @@
+# IntellijIdea files
+*.iml
+.idea
+out
+
 *.log
 *.zip
 *.tar.gz
 *.rar
 hs_err_pid*
-.idea
-/out/
+
+
 */target
-*.iml
+
 .DS_Store
 /target/
+*.txt
