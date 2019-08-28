@@ -25,7 +25,7 @@ public class Lesson3_Batiaev implements Serializable {
         //example2();
        //byteArrayStream();
         //fileStream();
-        pipedStream();
+        //pipedStream();
 //        sequenceStream();
        //dataStream();
         //bufferedStream();

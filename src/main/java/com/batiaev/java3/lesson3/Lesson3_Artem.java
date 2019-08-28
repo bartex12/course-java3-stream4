@@ -2,9 +2,7 @@ package com.batiaev.java3.lesson3;
 
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 public class Lesson3_Artem {
     public static void main(String[] args) throws IOException {
@@ -14,7 +12,10 @@ public class Lesson3_Artem {
         //bufReaderWork();
         //pipeWork(); //ошибки!
         //pipedStream(); //без ошибок
-        seqInputStreamWork();
+        //seqInputStreamWork();
+        //randomAccessWork();
+        consoleBook();
+       // bufferedWriterAndReaderArrayList();
     }
 
     private static void fileManipulations() throws IOException {
@@ -164,7 +165,7 @@ public class Lesson3_Artem {
 
     private static void seqInputStreamWork() throws IOException {
         ArrayList<InputStream> arr = new ArrayList<>();
-        arr.add(new FileInputStream("123/test1.txt"));
+        arr.add(new FileInputStream("123/test.txt"));
         arr.add(new FileInputStream("123/test2.txt"));
         arr.add(new FileInputStream("123/test3.txt"));
         arr.add(new FileInputStream("123/test4.txt"));
@@ -177,10 +178,121 @@ public class Lesson3_Artem {
     }
 
     private static void randomAccessWork() throws IOException {
-        RandomAccessFile randomAccessFile = new RandomAccessFile("123/test1.txt","r");
-        randomAccessFile.seek(1);
-        System.out.println(randomAccessFile.r);
+
+        byte[] bt = new byte[1800];
+        RandomAccessFile raf= new RandomAccessFile("123/test.txt","r");
+        raf.seek(5);
+        int x = 0;
+        x = raf.read(bt,0,11);
+        System.out.print(new String(bt, 0,x));
+        }
+
+    private static void   bufferedWriterAndReaderArrayList(){
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("Один");
+        arr.add("Два");
+        arr.add("Три");
+        arr.add("Четыре");
+        arr.add("Пять");
+        System.out.println("arr.size() = " + arr.size());
+
+        //блок записи  в файл
+        File buf = new File("bufWriter.txt");
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(buf))){
+            for (String s: arr){
+                bw.write(s);
+                bw.write(System.getProperty("line.separator"));
+            }
+            bw.flush();
+            System.out.println(" buf.length()" + buf.length());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //блок чтения из файла
+        try( BufferedReader br = new BufferedReader(new FileReader(buf))) {
+            ArrayList<String> input = new ArrayList<>();
+            String str;
+            while ((str = br.readLine())!=null){
+                input.add(str);
+            }
+            for (String s: input){
+                System.out.println(s);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-}
+
+        //консольное приложение Книга
+    private static void consoleBook() throws IOException {
+
+        System.out.println("Консольное приложение \"Книга\" ");
+        final int PAGE_SIZE = 2000;// размер страницы  2000 символов/100 символов в строке  = 20 строк
+        final int LINES = 100000; //количество строк по 100 случайных символов
+        byte[] bt = new byte[PAGE_SIZE]; //размер буфера = размеру страницы
+        File file = new File("123/book.txt");
+        ArrayList<String> arr = new ArrayList<>(LINES); //ArrayList подходящего размера
+        Random rnd = new Random();
+
+            for (int i = 0; i<LINES; i++ ){
+                String str = "";
+                for (int jj = 0; jj<100; jj++){
+                    int к = 65 + rnd.nextInt(60);
+                    str += (char)к; //собираем строку из 100 символов
+                }
+                arr.add(str); //добавляем строку в ArrayList
+        }
+            //заполняем файл строками из ArrayList
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+            for (String ii: arr){
+                bw.write(ii);
+                bw.write(System.getProperty("line.separator"));
+            }
+            bw.flush();
+            arr.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        long size = file.length(); //узнаём размер файла
+        System.out.println("Размер файла = " + size);
+        long pageCountMax = size/PAGE_SIZE +1; //рассчитываем количество страниц
+        System.out.println("Страниц в файле = " + pageCountMax);
+
+        //Метод, реализующий консольное приложение
+        //читаем файл постранично
+        RandomAccessFile raf= new RandomAccessFile(file,"r");
+            System.out.println("*** Для выхода введите /exit \n");
+            System.out.println("Введите номер страницы число от 1 до " + pageCountMax);
+            Scanner in = new Scanner(System.in);
+
+            while (true){
+                String s = in.nextLine();
+                if (s.trim().startsWith("/exit")){
+                  System.exit(0);
+                }else if (s.trim().equals("")) {
+                    System.out.println("Введите число");
+                }else {
+                    long pageNumber = Long.parseLong(s);
+                    if (pageNumber<1)pageNumber = 1;
+                    if (pageNumber > pageCountMax) pageNumber = pageCountMax;
+                    System.out.println("Страница: " + pageNumber);
+
+                    raf.seek((pageNumber-1)*(PAGE_SIZE));
+                    int x = 0;
+                    x = raf.read(bt,0,PAGE_SIZE);
+                    System.out.println(new String(bt, 0,x));
+
+                }
+            }
+
+    }
+
+    }
+
+
 
