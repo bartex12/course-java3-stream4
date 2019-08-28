@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Lesson3
+ * Lesson3_Batiaev
  *
  * @author anton
  * @since 26/08/19
  */
-public class Lesson3 implements Serializable {
+public class Lesson3_Batiaev implements Serializable {
     public static void main(String[] args) throws IOException {
 
         File file = new File("./test");
@@ -23,9 +23,9 @@ public class Lesson3 implements Serializable {
        //file();
         //example1();
         //example2();
-       byteArrayStream();
+       //byteArrayStream();
         //fileStream();
-//        pipedStream();
+        pipedStream();
 //        sequenceStream();
        //dataStream();
         //bufferedStream();
