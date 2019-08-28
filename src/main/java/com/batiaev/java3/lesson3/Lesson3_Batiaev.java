@@ -23,14 +23,14 @@ public class Lesson3 implements Serializable {
        //file();
         //example1();
         //example2();
-       //byteArrayStream();
+       byteArrayStream();
         //fileStream();
 //        pipedStream();
 //        sequenceStream();
        //dataStream();
         //bufferedStream();
 //        objectStream();
-        bufferedWriterAndReaderArrayList();
+        //bufferedWriterAndReaderArrayList();
     }
 
     private static void   bufferedWriterAndReaderArrayList(){
@@ -42,6 +42,7 @@ public class Lesson3 implements Serializable {
         arr.add("Пять");
         System.out.println("arr.size() = " + arr.size());
 
+        //блок записи  в файл
         File buf = new File("bufWriter.txt");
         try ( BufferedWriter bw = new BufferedWriter(new FileWriter(buf))){
             for (String s: arr){
@@ -53,6 +54,8 @@ public class Lesson3 implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //блок чтения из файла
         try( BufferedReader br = new BufferedReader(new FileReader(buf))) {
             ArrayList<String> input = new ArrayList<>();
             String str;
