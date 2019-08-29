@@ -1,12 +1,12 @@
 package com.batiaev.java3.lesson4.less4_metodichka.MethodsOfSyncronization;
 
 
-// 1 создаётся класс Key_Syncronazed_In_Method
+// 1 создаётся класс Syncronazed_In_Method
 // 2  в этом классе создаётся статический метод main
-// 3 создаются нестатические методы класса Key_Syncronazed_In_Method - это method1(), method2()
+// 3 создаются нестатические методы класса Syncronazed_In_Method - это method1(), method2()
 // к которым идёт обращение из статического метода main через создание экземпляра класса - key
 
-public class Key_Syncronazed_In_Method {
+public class Syncronazed_In_Method {
 
 //    При указании ключевого слова synchronized в объявлении метода, в роли монитора выступает объект,
 //    у	которого был вызван синхронизированный метод. -у нас это key
@@ -33,7 +33,7 @@ public class Key_Syncronazed_In_Method {
 //                    M1-конец
 
     public static void main(String[] args) {
-        Key_Syncronazed_In_Method key = new Key_Syncronazed_In_Method();
+        Syncronazed_In_Method key = new Syncronazed_In_Method();
 
         //через лямбда
 //        new Thread(() -> key. method1()).start();
