@@ -18,7 +18,8 @@ public class MainClass_Thread {
 
     public static void main(String[] args) {
         new MyThread().start();
-        new MyThread().start();
+        MyThread t = new MyThread();
+        t.start();
     }
 
     static class MyThread extends Thread {
