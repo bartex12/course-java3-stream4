@@ -17,23 +17,38 @@ public class MainClass_Runnable {
     //Выполнение программы продолжается до тех пор, пока все потоки не завершат работу.
 
     public static void main(String[] args) {
+
         new Thread(new MyRunnableClass()).start();
         new Thread(new MyRunnableClass()).start();
+        //можно так записать через  лямбда, не используя класс
+        Runnable run = () -> {
+            for (int i = 10; i < 20; i++) {
+                try {
+                    Thread.sleep(100);
+                    System.out.print(i+ " ");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        new Thread(run).start();
     }
+
 
     static class MyRunnableClass implements Runnable {
         @Override
-    public void run() {
-        for (int i = 0; i < 10; i++) {
-            try {
-                Thread.sleep(100);
-                System.out.print(i);
-            } catch (InterruptedException e) { e.printStackTrace();
+        public void run() {
+            for (int i = 0; i < 10; i++) {
+                try {
+                    Thread.sleep(100);
+                    System.out.print(i+ " ");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-    }
     }
 }
 
 //вывод
-//00112233445566778899
+//0 0 1 1 10 2 2 11 3 3 12 4 4 13 5 5 14 6 6 15 7 7 16 8 8 17 9 9 18 19

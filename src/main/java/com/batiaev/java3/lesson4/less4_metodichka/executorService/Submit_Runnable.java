@@ -8,9 +8,11 @@ import java.util.concurrent.Future;
 // но возвращает объект типа Future, который можно использовать
 // для проверки завершенности выполнения задачи.
 
-public class Submit_ {
+public class Submit_Runnable {
     public static void main(String[] args) throws Exception {
+
         ExecutorService executorService = Executors.newFixedThreadPool(2);
+
         Future future = executorService.submit(new Runnable() {
         public void run() {
             System.out.println("Асинхронная задача " + Thread.currentThread().getName());

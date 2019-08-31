@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson4.less4_metodichka.MethodsOfSyncronization;
+package com.batiaev.java3.lesson4.less4_metodichka.methodsOfSyncronization;
 
 // 1 создаётся класс ObjectsHowMonitor
 // 2  в этом классе создаётся статический метод main

@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson4.less4_metodichka.MethodsOfSyncronization;
+package com.batiaev.java3.lesson4.less4_metodichka.methodsOfSyncronization;
 
 
 // 1 создаётся класс Syncronazed_In_Method

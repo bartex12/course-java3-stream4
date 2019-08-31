@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson4.less4_metodichka.Interaction_Wait;
+package com.batiaev.java3.lesson4.less4_metodichka.interaction_Wait;
 
 // 1 создаётся класс WaitNotifyClass
 // 2  в этом классе создаётся статический метод main
