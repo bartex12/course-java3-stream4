@@ -6,7 +6,7 @@ import java.util.concurrent.CyclicBarrier;
 public class MainRace_Demo {
 
     public static final int CARS_COUNT = 4;
-    
+
     public static void main(String[] args) throws InterruptedException {
 
         //передаём  в Car, чтобы обеспечить порядок вывода Гонка началась!!! и Гонка закончилась!!!
