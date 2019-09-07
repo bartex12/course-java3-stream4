@@ -35,22 +35,22 @@ public class Array1And4_Test {
     }
 
     @Test
-    public  void test1(){
+    public  void test_Many1_And4(){
         Assert.assertTrue(array1And4.is_1_Or_4(arr1) );
     }
 
     @Test
-    public  void test2(){
+    public  void test_Many4_And1(){
         Assert.assertTrue(array1And4.is_1_Or_4(arr2) );
     }
 
     @Test
-    public  void test3(){
+    public  void test_Only1(){
         Assert.assertFalse(array1And4.is_1_Or_4(arr3) );
     }
 
     @Test
-    public  void test4(){
+    public  void test_Only4(){
         Assert.assertFalse(array1And4.is_1_Or_4(arr4) );
     }
 

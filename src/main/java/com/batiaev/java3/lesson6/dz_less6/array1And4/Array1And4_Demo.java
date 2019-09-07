@@ -2,6 +2,7 @@ package com.batiaev.java3.lesson6.dz_less6.array1And4;
 
 public class Array1And4_Demo {
 
+    //входной массив должен состоять только из 1 и 4
     public static void main(String[] args) {
         int[] arr1 = {1,1,1,1,1};
         int[] arr2 = {4,4,4,4,4,4};

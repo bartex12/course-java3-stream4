@@ -10,7 +10,7 @@ public class SubArr_Test {
     int[] arr2 = {};
     int[] arr22 = {4,4,4,4};
 
-    int[] arr3 = null;
+    //int[] arr3 = null;
     int[] arr33 = {};
 
     int[] arr4 = {};
@@ -36,22 +36,22 @@ public class SubArr_Test {
     }
 
     @Test
-    public void testArray1(){
+    public void test_Is1Element(){
         Assert.assertArrayEquals(arr1, sa.getSubArray(arr11));
     }
 
     @Test
-    public void testArray2(){
+    public void test_Is0Element(){
         Assert.assertArrayEquals(arr2, sa.getSubArray(arr22));
     }
 
     @Test
-    public void testArray3(){
-        Assert.assertArrayEquals(arr3, sa.getSubArray(arr33));
+    public void test_HoleArray(){
+        Assert.assertArrayEquals(null, sa.getSubArray(arr33));
     }
 
     @Test(expected = RuntimeException.class)
-    public void testArray4(){
+    public void test_No4InArray(){
         Assert.assertArrayEquals(arr4, sa.getSubArray(arr44));
     }
 
