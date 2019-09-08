@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson7.menodichka_lesson7;
+package com.batiaev.java3.lesson7.menodichka_lesson7.classReflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -26,10 +26,10 @@ public class CreateObjectReflectionDemo {
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-        //java.lang.InstantiationException: com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor
+        //java.lang.InstantiationException: com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor
         //	at java.lang.Class.newInstance(Class.java:427)
-        //	at com.batiaev.java3.lesson7.menodichka_lesson7.CreateObjectReflectionDemo.main(CreateObjectReflectionDemo.java:19)
-        //Caused by: java.lang.NoSuchMethodException: com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor.<init>()
+        //	at com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CreateObjectReflectionDemo.main(CreateObjectReflectionDemo.java:19)
+        //Caused by: java.lang.NoSuchMethodException: com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor.<init>()
         //	at java.lang.Class.getConstructor0(Class.java:3082)
         //	at java.lang.Class.newInstance(Class.java:412)
         //	... 1 more
@@ -54,7 +54,7 @@ public class CreateObjectReflectionDemo {
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-        //имя_класса = com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor имя_поля = name тип_поля = class java.lang.String
+        //имя_класса = com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor имя_поля = name тип_поля = class java.lang.String
 
     }
 }

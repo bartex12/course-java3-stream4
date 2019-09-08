@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson7.menodichka_lesson7;
+package com.batiaev.java3.lesson7.menodichka_lesson7.classReflection;
 
 //класс с приватным полем для использования в классе PrivateFieldsClassReflection_Demo
 public class ClassWithPrivateField {

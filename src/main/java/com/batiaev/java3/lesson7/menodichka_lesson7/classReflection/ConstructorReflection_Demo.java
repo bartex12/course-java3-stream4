@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson7.menodichka_lesson7;
+package com.batiaev.java3.lesson7.menodichka_lesson7.classReflection;
 
 //Методы getConstructors() и getDeclaredConstructors() возвращают массив объектов типа Constructor.
 // Они содержат в себе информацию о конструкторах класса: имя, модификаторы, типы параметров,
@@ -22,8 +22,8 @@ public class ConstructorReflection_Demo {
     }
 
 }
-//public com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor(java.lang.String,java.lang.String,int)
-//public com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor(java.lang.String,int)
-//public com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor(java.lang.String)
+//public com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor(java.lang.String,java.lang.String,int)
+//public com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor(java.lang.String,int)
+//public com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor(java.lang.String)
 //-----------
-//public com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor(java.lang.String,int)
+//public com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor(java.lang.String,int)

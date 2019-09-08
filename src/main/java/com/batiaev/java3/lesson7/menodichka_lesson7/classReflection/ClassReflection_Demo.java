@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson7.menodichka_lesson7;
+package com.batiaev.java3.lesson7.menodichka_lesson7.classReflection;
 
 import java.lang.reflect.Modifier;
 

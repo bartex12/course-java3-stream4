@@ -1,4 +1,4 @@
-package com.batiaev.java3.lesson7.menodichka_lesson7;
+package com.batiaev.java3.lesson7.menodichka_lesson7.classReflection;
 
 //Методы getMethods() и getDeclaredMethods() возвращают массив объектов типа Method,
 // в которых содержится полная информация о методах класса. Если известно имя метода
@@ -27,7 +27,7 @@ public class MethodsReflection_Demo {
         }
         //void|||meow|||[int]
         //void|||jamp|||[]
-        //public void com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor.meow(int) | public void com.batiaev.java3.lesson7.menodichka_lesson7.CatConstructor.jamp()
+        //public void com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor.meow(int) | public void com.batiaev.java3.lesson7.menodichka_lesson7.classReflection.CatConstructor.jamp()
 
         //***************методы через getMethods************
         System.out.println("*****************************");
