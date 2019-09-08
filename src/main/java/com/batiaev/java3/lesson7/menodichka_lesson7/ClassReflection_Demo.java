@@ -2,7 +2,7 @@ package com.batiaev.java3.lesson7.menodichka_lesson7;
 
 import java.lang.reflect.Modifier;
 
-public class ClassReflection {
+public class ClassReflection_Demo {
     public static void main(String[] args) {
 
 

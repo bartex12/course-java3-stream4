@@ -2,7 +2,7 @@ package com.batiaev.java3.lesson7.menodichka_lesson7;
 
 import java.lang.reflect.Field;
 
-public class FieldsClassReflection {
+public class FieldsClassReflection_Demo {
     public static void main(String[] args) {
 
         //************* тип поля и имя поля ***************
